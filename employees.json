@@ -1,0 +1,26 @@
+[
+  {
+    "Employee Number": 1,
+    "Name": "Hiba",
+    "Birth Date": "23/03/2004",
+    "Type": "Agent",
+    "Hire Date": "02/09/2025",
+    "Base Salary": 5000.0,
+    "Overtime Rate": "",
+    "Overtime Hours": "",
+    "Responsibility Bonus": 1000.0,
+    "Net Salary": 4800.0
+  },
+  {
+    "Employee Number": 2,
+    "Name": "Aabla",
+    "Birth Date": "05/12/2003",
+    "Type": "Trainer",
+    "Hire Date": "07/10/2027",
+    "Base Salary": 7000.0,
+    "Overtime Rate": 70.0,
+    "Overtime Hours": 5,
+    "Responsibility Bonus": "",
+    "Net Salary": 4850.999999999999
+  }
+]
