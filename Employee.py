@@ -16,6 +16,10 @@ class Employee(IEmployee):
     def EmployeeNumber(self):
         return self._employeeNumber
 
+    @EmployeeNumber.setter
+    def EmployeeNumber(self, value):
+        self._employeeNumber = value
+
     @property
     def Name(self):
         return self._name
