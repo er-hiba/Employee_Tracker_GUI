@@ -8,6 +8,7 @@ from Trainer import Trainer
 from IR import IR
 
 def add_employee():
+    global counter
     # Get employee data from entry widgets
     name = name_entry.get()
     baseSalary = float(base_salary_entry.get()) if base_salary_entry.get() else 0.0
@@ -34,6 +35,12 @@ def add_employee():
     else:
         # Handle other employee types or raise an exception
         raise ValueError("Unsupported employee type")
+
+    # Increment the counter for the new employee
+    counter += 1
+
+    # Set the employee number for the new employee
+    new_employee.EmployeeNumber = counter
 
     # Calculate net salary using SalaryToPay instance method
     net_salary = new_employee.SalaryToPay()
@@ -90,14 +97,23 @@ def remove_employee():
         save_data()
 
 def load_data():
+    global counter
     try:
         with open("employees.json", "r") as file:
             data = json.load(file)
+
+            # Find the highest employee number in the loaded data
+            existing_numbers = [int(employee.get("Employee Number", 0)) for employee in data]
+            if existing_numbers:
+                counter = max(existing_numbers)
+            else:
+                counter = 0
+
             for employee in data:
                 tree.insert("", "end", values=list(employee.values()))
     except FileNotFoundError:
-        # If the file doesn't exist, create an empty list
         data = []
+        counter = 0
 
 
 def save_data():
@@ -137,9 +153,9 @@ root.selected_employee = None
 # Labels for employee information
 name_label = Label(root, text="Name:")
 name_label.place(x=20, y=10)
-birth_date_label = Label(root, text="Birth Date:")
+birth_date_label = Label(root, text="Birth Date (m/d/y) :")
 birth_date_label.place(x=20, y=40)
-hire_date_label = Label(root, text="Hire Date:")
+hire_date_label = Label(root, text="Hire Date (m/d/y) :")
 hire_date_label.place(x=20, y=70)
 base_salary_label = Label(root, text="Base Salary:")
 base_salary_label.place(x=20, y=100)
@@ -211,4 +227,3 @@ tree.place(x=20, y=300)
 load_data()
 
 root.mainloop()
-
