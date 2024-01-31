@@ -2,13 +2,13 @@ from abc import ABC, abstractmethod
 
 class IEmployee(ABC):
     @abstractmethod
-    def age(self):
+    def Age(self):
         pass
 
     @abstractmethod
-    def seniority(self):
+    def Seniority(self):
         pass
 
     @abstractmethod
-    def retirementDate(self, retirementAge):
+    def RetirementDate(self, retirementAge):
         pass
